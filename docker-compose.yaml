@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  service1:
+    image: benhesketh21/service1:latest
+    build: main/
+    ports:
+        - target: 5000
+          published: 5000
+    deploy:
+      replicas: 3
+  service2:
+    image: benhesketh21/service2:latest
+    build: converter/
+    ports:
+        - target: 5001
+          published: 5001
+    deploy:
+      replicas: 3
+  service3:
+    image: benhesketh21/service3:latest
+    build: prime/
+    ports:
+        - target: 5002
+          published: 5002
+    deploy:
+      replicas: 3

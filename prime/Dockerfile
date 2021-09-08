@@ -4,11 +4,11 @@ RUN apt update
 
 RUN apt install python3 python3-pip python3-venv -y
 
-RUN mkdir /opt/converter
+RUN mkdir /opt/prime
 
-COPY . /opt/converter
+COPY . /opt/prime
 
-WORKDIR /opt/converter
+WORKDIR /opt/prime
 
 RUN pip3 install -r requirements.txt
 
