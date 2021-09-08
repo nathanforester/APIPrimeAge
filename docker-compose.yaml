@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   service1:
-    image: benhesketh21/service1:latest
+    image: nathanforester321/main:latest
     build: main/
     ports:
         - target: 5000
@@ -9,7 +9,7 @@ services:
     deploy:
       replicas: 3
   service2:
-    image: benhesketh21/service2:latest
+    image: nathanforester321/converter:latest
     build: converter/
     ports:
         - target: 5001
@@ -17,7 +17,7 @@ services:
     deploy:
       replicas: 3
   service3:
-    image: benhesketh21/service3:latest
+    image: nathanforester321/prime:latest
     build: prime/
     ports:
         - target: 5002
