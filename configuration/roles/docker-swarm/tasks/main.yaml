@@ -1,0 +1,9 @@
+---    
+    - name: Initialize swarm
+      community.general.docker_swarm:
+        state: present
+      
+    - name: Get the manager node join-token
+      community.general.docker_swarm_info:
+      register: swarm_info
+    
