@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def dob(BirthYear):
-    year = today.year()
+    year = datetime.utcnow().year
     #BirthYear = int(user input)
-    ageInMonths = (BirthYear - year) * 12
+    ageInMonths = (int(year) - BirthYear) * 12
     return jsonify(ageInMonths) 
