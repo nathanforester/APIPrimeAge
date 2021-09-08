@@ -17,5 +17,5 @@ def home():
 
 @app.route('/prime/<dob>', methods=['GET', 'POST'])
 def prime(dob):
-    prime = requests.get('http://primer:5002'+int(dob))
+    prime = requests.get('http://prime:5002'+int(dob))
     return render_template('convertPrime.html', dob=dob, prime=prime.json()['prime'])
