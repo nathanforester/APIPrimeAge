@@ -1,7 +1,6 @@
 from flask import Flask
 from application import app
-import requests
-from flask import url_for, render_template, request
+from flask import url_for, render_template, request, redirect, json, requests
 
 def dob():
     dob = requests.get('http://converter:5001').json()
@@ -9,10 +8,14 @@ def dob():
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    date = dob()
-    return render_template('months.html', dob=date)
+    date = dob
+    if request.method == "POST":
+        date = request.form["dob"]
+        return redirect(url_for('index.html', dob=date))
+    else:
+        return render_template('index.html')
 
 @app.route('/prime/<dob>', methods=['GET', 'POST'])
 def prime(dob):
     prime = requests.get('http://primer:5002'+int(dob))
-    return render_template('months.html', dob=dob, prime=prime.json()['prime'])
+    return render_template('convertPrime.html', dob=dob, prime=prime.json()['prime'])
