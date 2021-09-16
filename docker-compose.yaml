@@ -1,24 +1,27 @@
 version: '3.7'
 services:
-  service1:
+  main:
+    container_name: main
     image: nathanforester321/main:latest
-    build: main/
+    build: ./main
     ports:
         - target: 5000
           published: 5000
     deploy:
       replicas: 3
-  service2:
+  converter:
+    container_name: converter
     image: nathanforester321/converter:latest
-    build: converter/
+    build: ./converter
     ports:
         - target: 5001
           published: 5001
     deploy:
       replicas: 3
-  service3:
+  prime:
+    container_name: prime
     image: nathanforester321/prime:latest
-    build: prime/
+    build: ./prime
     ports:
         - target: 5002
           published: 5002
