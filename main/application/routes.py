@@ -1,24 +1,25 @@
 from flask import Flask
 from application import app
 import requests
+import json
 from flask import url_for, render_template, request, redirect, json
 
-def dob():
-    dob = requests.get('http://converter:5001').json()
-    return dob
 
 @app.route('/', methods=['GET', 'POST'])
-def home():
-    if request.method == 'POST':
-        date = dob
-        return redirect(url_for('prime', dob=date))
-
+def index():
     return render_template('index.html')
 
-@app.route('/prime/', methods=['GET', 'POST'])
+@app.route('/prime', methods=['GET', 'POST'])
 def prime():
-    if request.method == 'GET':
-        prime = requests.get('http://prime:5002').json()
-        return redirect(url_for('prime'))
-    else:
-        return render_template('convertPrime.html', dob=dob)
+    return render_template('convertPrime.html')
+
+@app.route('/date', methods=['GET', 'POST'])
+def date():
+    if requests.get=="POST":
+        birthDate = requests.post('http://converter:5001/birthDate')
+        prime = requests.post('http://prime:5002/prime')
+        formData = request.form["date"]
+        return redirect(url_for("prime", birthDate=formData))
+    
+    return render_template("index.html")
+

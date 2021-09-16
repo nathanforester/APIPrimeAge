@@ -4,7 +4,7 @@ all:
       hosts:
         34.142.91.232:
     hosts:
-      hosts:
+      worker:
         3.8.2.224:
   vars:
     ansible_user: ubuntu
