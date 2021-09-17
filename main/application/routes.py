@@ -9,17 +9,11 @@ from flask import url_for, render_template, request, redirect, json
 def index():
     return render_template('index.html')
 
-@app.route('/prime', methods=['GET', 'POST'])
-def prime():
-    return render_template('convertPrime.html')
 
 @app.route('/date', methods=['GET', 'POST'])
 def date():
-    if requests.get=="POST":
-        birthDate = requests.post('http://converter:5001/birthDate')
-        prime = requests.post('http://prime:5002/prime')
-        formData = request.form["date"]
-        return redirect(url_for("prime", birthDate=formData))
-    
-    return render_template("index.html")
+    formData = request.form["date"]
+    birthDate = requests.get('http://converter:5001/birthDate/<int:birthDate>' + str(int(formData)))
+    prime = requests.get('http://prime:5002/prime/<int:ageInMonths>' + str(int(formData)))
+    return render_template('convertPrime.html', formData=formData)
 

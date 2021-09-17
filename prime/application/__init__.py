@@ -13,4 +13,4 @@ def prime(birthDate):
             prime = "You do not appear to exist"
     else:
         prime = "You do not appear to exist"
-    return Response(jsonify(str(prime))) 
+    return Response(str(prime)) 
