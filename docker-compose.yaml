@@ -1,7 +1,6 @@
 version: '3.7'
 services:
   main:
-    container_name: main
     image: nathanforester321/main:latest
     build: ./main
     ports:
@@ -10,7 +9,6 @@ services:
     deploy:
       replicas: 3
   converter:
-    container_name: converter
     image: nathanforester321/converter:latest
     build: ./converter
     ports:
@@ -19,7 +17,6 @@ services:
     deploy:
       replicas: 3
   prime:
-    container_name: prime
     image: nathanforester321/prime:latest
     build: ./prime
     ports:
