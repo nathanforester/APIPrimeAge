@@ -18,7 +18,7 @@ pipeline {
         // }
         stage('Building & Deploying') {
             steps {
-                sh 'sudo docker-compose -f /home/jenkins/workspace/APIPrimeAge/docker-compose.yaml up -d'
+                sh 'sudo docker-compose up -d'
             }
         }
     }
