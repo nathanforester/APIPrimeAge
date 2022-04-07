@@ -14,9 +14,9 @@ def prime(ageInMonths):
     ageMonths = int(ageMonths)
     if ageMonths > 1:
         if ageMonths % 2 == 1 or ageMonths == 2:
-            prime = "yes, you are PRIME, WHY NOT!?"
+            prime = "yes, you are PRIME"
         elif ageMonths % 2 != 1:
-            prime = "No, you are COMPOSITE, haha seeso!"
+            prime = "No, you are COMPOSITE"
         else:
             prime = "You do not appear to exist"
     else:
