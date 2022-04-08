@@ -26,10 +26,7 @@ pipeline {
                 sh '''
                     ssh -i /home/jenkins/.ssh/Estio-Training-NForester -o StrictHostKeyChecking=no jenkins@10.0.1.10
                     sudo su ubuntu
-                    scriptFile = '/home/ubutu/script.sh'
-
-                    with open(scriptPath,'r') as file:
-                        lines = file.readlines()
+                    . /home/ubuntu/script.sh
                 '''
             }
         }
