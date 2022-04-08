@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh '''
                     ssh -i /home/jenkins/.ssh/Estio-Training-NForester -o StrictHostKeyChecking=no jenkins@10.0.1.10
-                    sudo su ubuntu
+                    sudo su -i
                     sudo touch /home/ubuntu/script.sh
                     cat <<EOT > /home/ubuntu/script.sh
                     #!/bin/bash
