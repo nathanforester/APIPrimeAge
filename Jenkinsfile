@@ -24,8 +24,9 @@ pipeline {
         stage('Deploying') {
             steps {
                 sh '''
-                    ssh -i Estio-Training-NForester -o StrictHostKeyChecking=no ubuntu@10.0.1.10
-                    sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml up -d
+                    ssh -i /home/jenkins/.ssh/Estio-Training-NForester -o StrictHostKeyChecking=no jenkins@10.0.1.10
+                    sudo su ubuntu
+                    sudo docker-compose -f /home/ubuntu/APIFlaskDocker/docker-composeA.yaml up -d
                 '''
             }
         }
