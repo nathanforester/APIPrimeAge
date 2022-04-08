@@ -6,7 +6,7 @@ pipeline {
                     description: 'Read Jenkinsfile and exit.')
 		    }
     stages {
-        // stage('Pre') { 
+        // stage('Pre') { hello dev
         //     steps {
         //         sh 'ansible-playbook -v -i /home/jenkins/.jenkins/workspace/FlaskApp/inventory.yaml /home/jenkins/.jenkins/workspace/FlaskApp/playbook.yaml'
         //     }
