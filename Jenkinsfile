@@ -21,12 +21,22 @@ pipeline {
                 sh 'sudo docker-compose build'
             }
         }
+        stage('copy tested app to agent node') {
+            steps {
+                sh '''
+                   git clone https://github.com/nathanforester/APIPrimeAge.git
+                   sudo chown jenkins -R /home/jenkins/APIPrimeAge
+                   sudo scp -i /home/jenkins/.ssh/Estio-Training-NForester /home/jenkins/APIPrimeAge jenkins@10.0.1.10:/home/jenkins/
+                   sudo rm -rf /home/jenkins/APIPrimeAge
+                '''
+            }
+        }
         stage('Deploying') {
             steps {
                 sh '''
                     ssh -i /home/jenkins/.ssh/Estio-Training-NForester -o StrictHostKeyChecking=no jenkins@10.0.1.10
-                    sudo su ubuntu
-                    sudo docker-compose -f /home/ubuntu/APIFlaskDocker/docker-composeA.yaml up -d
+                    sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml down                  
+                    sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml build
                 '''
             }
         }
