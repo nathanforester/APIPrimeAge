@@ -16,9 +16,17 @@ pipeline {
         //         sh 'sudo pytest /home/jenkins/.jenkins/workspace/FlaskApp/'
         //     }
         // }
-        stage('Building & Deploying') {
+        stage('Building') {
             steps {
                 sh 'sudo docker-compose build'
+            }
+        }
+        stage('Deploying') {
+            steps {
+                sh '''
+                    ssh -i Estio-Training-NForester -o StrictHostKeyChecking=no ubuntu@10.0.1.10
+                    sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml up -d
+                '''
             }
         }
     }
