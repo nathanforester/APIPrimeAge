@@ -6,7 +6,7 @@ pipeline {
                     description: 'Read Jenkinsfile and exit.')
 		    }
     stages {
-        // stage('Pre') { hello from Jenkins!
+        // stage('Pre') { hello push
         //     steps {
         //         sh 'ansible-playbook -v -i /home/jenkins/.jenkins/workspace/FlaskApp/inventory.yaml /home/jenkins/.jenkins/workspace/FlaskApp/playbook.yaml'
         //     }
@@ -18,18 +18,14 @@ pipeline {
         // }
         stage('Building') {
             steps {
-                sh '''
-                    sudo docker system prune -a -f
-                    sudo docker-compose build
-                '''
+                sh 'sudo docker-compose build'
             }
         }
         stage('Deploying') {
             steps {
                 sh '''
                     ssh -i /home/jenkins/.ssh/Estio-Training-NForester -o StrictHostKeyChecking=no jenkins@10.0.1.10
-                    sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml down
-                    sudo docker system prune -a -f                  
+                    sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml down                  
                     sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml build
                 '''
             }
