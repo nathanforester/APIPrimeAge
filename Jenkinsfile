@@ -25,7 +25,8 @@ pipeline {
             steps {
                 sh '''
                     ssh -i /home/jenkins/.ssh/myKey -o StrictHostKeyChecking=no ubuntu@172.31.36.186                 
-                    sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml build
+                    cd APIPrimeAge
+		    docker-compose build
                 '''
             }
         }
