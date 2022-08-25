@@ -24,7 +24,7 @@ pipeline {
         stage('Deploying') {
             steps {
                 sh '''
-                    ssh -i /home/jenkins/.ssh/Estio-Training-NForester -o StrictHostKeyChecking=no jenkins@172.31.36.186
+                    ssh -i /home/jenkins/.ssh/myKey -o StrictHostKeyChecking=no jenkins@172.31.36.186
                     sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml down                  
                     sudo docker-compose -f /home/ubuntu/APIPrimeAge/docker-compose.yaml build
                 '''
