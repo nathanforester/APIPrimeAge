@@ -16,19 +16,19 @@ pipeline {
         //         sh 'sudo pytest /home/jenkins/.jenkins/workspace/FlaskApp/'
         //     }
         // }
-//         stage('Building') {
-//             steps {
-//                 sh 'sudo docker-compose build'
-//             }
-//         }
-        stage('Deploying') {
+        stage('Building') {
             steps {
-                sh '''
-                    ssh -i /home/jenkins/.ssh/myKey -o StrictHostKeyChecking=no ubuntu@172.31.36.186                 
-                    cd APIPrimeAge
-		    docker-compose build
-                '''
+                sh 'sudo docker-compose -f /home/jenkins/APIPrimeAge/docker-compose.yaml'
             }
         }
+//         stage('Deploying') {
+//             steps {
+//                 sh '''
+//                     ssh -i /home/jenkins/.ssh/myKey -o StrictHostKeyChecking=no ubuntu@172.31.36.186                 
+//                     cd APIPrimeAge
+// 		    docker-compose build
+//                 '''
+//             }
+//         }
     }
 }
